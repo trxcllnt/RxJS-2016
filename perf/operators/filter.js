@@ -10,16 +10,16 @@ module.exports = function (suite) {
 
     return suite
         .add('old filter with immediate scheduler', function () {
-            oldFilterWithImmediateScheduler.subscribe();
+            oldFilterWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old filter with current thread scheduler', function () {
-            oldFilterWithCurrentThreadScheduler.subscribe();
+            oldFilterWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new filter with immediate scheduler', function () {
-            newFilterWithImmediateScheduler.subscribe();
+            newFilterWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new filter with current thread scheduler', function () {
-            newFilterWithCurrentThreadScheduler.subscribe();
+            newFilterWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
 
     function divByTwo(x) {
@@ -29,4 +29,7 @@ module.exports = function (suite) {
     function divByTen(x) {
         return x / 10 === 0;
     }
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

@@ -10,19 +10,22 @@ module.exports = function (suite) {
 
     return suite
         .add('old zip with immediate scheduler', function () {
-            oldZipWithImmediateScheduler.subscribe();
+            oldZipWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old zip with current thread scheduler', function () {
-            oldZipWithCurrentThreadScheduler.subscribe();
+            oldZipWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new zip with immediate scheduler', function () {
-            newZipWithImmediateScheduler.subscribe();
+            newZipWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new zip with current thread scheduler', function () {
-            newZipWithCurrentThreadScheduler.subscribe();
+            newZipWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
     
     function add(x, y) {
         return x + y;
     }
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

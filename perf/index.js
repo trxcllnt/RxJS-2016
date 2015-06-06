@@ -4,6 +4,7 @@ var Benchmark = require("benchmark");
 var suite = new Benchmark.Suite;
 
 Observable.from([
+
         require("perf/observable/from-array"),
         require("perf/observable/from-with-array"),
         require("perf/observable/from-with-string"),

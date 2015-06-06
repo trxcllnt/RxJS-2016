@@ -10,15 +10,18 @@ module.exports = function (suite) {
 
     return suite
         .add('old merge (proto) with immediate scheduler', function () {
-            oldMergeWithImmediateScheduler.subscribe();
+            oldMergeWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old merge (proto) with current thread scheduler', function () {
-            oldMergeWithCurrentThreadScheduler.subscribe();
+            oldMergeWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new merge (proto) with immediate scheduler', function () {
-            newMergeWithImmediateScheduler.subscribe();
+            newMergeWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new merge (proto) with current thread scheduler', function () {
-            newMergeWithCurrentThreadScheduler.subscribe();
+            newMergeWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

@@ -16,15 +16,18 @@ module.exports = function fromWithString(suite) {
     // add tests
     return suite
         .add('old from (array) with immediate scheduler', function () {
-            oldFromWithImmediateScheduler.subscribe();
+            oldFromWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old from (array) with current thread scheduler', function () {
-            oldFromWithCurrentThreadScheduler.subscribe();
+            oldFromWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new from (array) with immediate scheduler', function () {
-            newFromWithImmediateScheduler.subscribe();
+            newFromWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new from (array) with current thread scheduler', function () {
-            newFromWithCurrentThreadScheduler.subscribe();
+            newFromWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
-}
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
+};

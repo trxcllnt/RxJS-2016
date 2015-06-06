@@ -10,15 +10,18 @@ module.exports = function (suite) {
 
     return suite
         .add('old toArray with immediate scheduler', function () {
-            oldToArrayWithImmediateScheduler.subscribe();
+            oldToArrayWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old toArray with current thread scheduler', function () {
-            oldToArrayWithCurrentThreadScheduler.subscribe();
+            oldToArrayWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new toArray with immediate scheduler', function () {
-            newToArrayWithImmediateScheduler.subscribe();
+            newToArrayWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new toArray with current thread scheduler', function () {
-            newToArrayWithCurrentThreadScheduler.subscribe();
+            newToArrayWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

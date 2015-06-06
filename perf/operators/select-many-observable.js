@@ -10,15 +10,18 @@ module.exports = function (suite) {
 
     return suite
         .add('old selectMany (Observable) with immediate scheduler', function () {
-            oldSelectManyWithImmediateScheduler.subscribe();
+            oldSelectManyWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old selectMany (Observable) with current thread scheduler', function () {
-            oldSelectManyWithCurrentThreadScheduler.subscribe();
+            oldSelectManyWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new selectMany (Observable) with immediate scheduler', function () {
-            newSelectManyWithImmediateScheduler.subscribe();
+            newSelectManyWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new selectMany (Observable) with current thread scheduler', function () {
-            newSelectManyWithCurrentThreadScheduler.subscribe();
+            newSelectManyWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
-}
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
+};

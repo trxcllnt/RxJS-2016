@@ -11,15 +11,18 @@ module.exports = function range(suite) {
 
     return suite
         .add('old range with immediate scheduler', function () {
-            oldRangeWithImmediateScheduler.subscribe();
+            oldRangeWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old range with current thread scheduler', function () {
-            oldRangeWithCurrentThreadScheduler.subscribe();
+            oldRangeWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new range with immediate scheduler', function () {
-            newRangeWithImmediateScheduler.subscribe();
+            newRangeWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new range with current thread scheduler', function () {
-            newRangeWithCurrentThreadScheduler.subscribe();
+            newRangeWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

@@ -10,15 +10,18 @@ module.exports = function (suite) {
 
     return suite
         .add('old concatMap with immediate scheduler', function () {
-            oldConcatMapWithImmediateScheduler.subscribe();
+            oldConcatMapWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old concatMap with current thread scheduler', function () {
-            oldConcatMapWithCurrentThreadScheduler.subscribe();
+            oldConcatMapWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new concatMap with immediate scheduler', function () {
-            newConcatMapWithImmediateScheduler.subscribe();
+            newConcatMapWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new concatMap with current thread scheduler', function () {
-            newConcatMapWithCurrentThreadScheduler.subscribe();
+            newConcatMapWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

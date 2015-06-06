@@ -10,19 +10,22 @@ module.exports = function (suite) {
 
     return suite
         .add('old combineLatest with immediate scheduler', function () {
-            oldCombineLatestWithImmediateScheduler.subscribe();
+            oldCombineLatestWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old combineLatest with current thread scheduler', function () {
-            oldCombineLatestWithCurrentThreadScheduler.subscribe();
+            oldCombineLatestWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new combineLatest with immediate scheduler', function () {
-            newCombineLatestWithImmediateScheduler.subscribe();
+            newCombineLatestWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new combineLatest with current thread scheduler', function () {
-            newCombineLatestWithCurrentThreadScheduler.subscribe();
+            newCombineLatestWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
     
     function add(x, y) {
         return x + y;
     }
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

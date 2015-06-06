@@ -10,19 +10,22 @@ module.exports = function (suite) {
 
     return suite
         .add('old reduce with immediate scheduler', function () {
-            oldReduceWithImmediateScheduler.subscribe();
+            oldReduceWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old reduce with current thread scheduler', function () {
-            oldReduceWithCurrentThreadScheduler.subscribe();
+            oldReduceWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new reduce with immediate scheduler', function () {
-            newReduceWithImmediateScheduler.subscribe();
+            newReduceWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new reduce with current thread scheduler', function () {
-            newReduceWithCurrentThreadScheduler.subscribe();
+            newReduceWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
 
     function add(acc, x) {
         return x + x
     }
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

@@ -10,19 +10,22 @@ module.exports = function (suite) {
 
     return suite
         .add('old scan with immediate scheduler', function () {
-            oldScanWithImmediateScheduler.subscribe();
+            oldScanWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old scan with current thread scheduler', function () {
-            oldScanWithCurrentThreadScheduler.subscribe();
+            oldScanWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new scan with immediate scheduler', function () {
-            newScanWithImmediateScheduler.subscribe();
+            newScanWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new scan with current thread scheduler', function () {
-            newScanWithCurrentThreadScheduler.subscribe();
+            newScanWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
 
     function add(acc, x) {
         return x + x
     }
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

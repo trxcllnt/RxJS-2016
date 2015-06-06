@@ -15,15 +15,18 @@ module.exports = function fromArray(suite) {
     // add tests
     return suite
         .add('old fromArray with immediate scheduler', function () {
-            oldFromArrayWithImmediateScheduler.subscribe();
+            oldFromArrayWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old fromArray with current thread scheduler', function () {
-            oldFromArrayWithCurrentThreadScheduler.subscribe();
+            oldFromArrayWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new fromArray with immediate scheduler', function () {
-            newFromArrayWithImmediateScheduler.subscribe();
+            newFromArrayWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new fromArray with current thread scheduler', function () {
-            newFromArrayWithCurrentThreadScheduler.subscribe();
+            newFromArrayWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
-}
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
+};

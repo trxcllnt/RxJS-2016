@@ -10,16 +10,16 @@ module.exports = function (suite) {
 
     return suite
         .add('old select with immediate scheduler', function () {
-            oldSelectWithImmediateScheduler.subscribe();
+            oldSelectWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old select with current thread scheduler', function () {
-            oldSelectWithCurrentThreadScheduler.subscribe();
+            oldSelectWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new select with immediate scheduler', function () {
-            newSelectWithImmediateScheduler.subscribe();
+            newSelectWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new select with current thread scheduler', function () {
-            newSelectWithCurrentThreadScheduler.subscribe();
+            newSelectWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
 
     function square(x) {
@@ -29,4 +29,7 @@ module.exports = function (suite) {
     function double(x) {
         return x + x;
     }
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };

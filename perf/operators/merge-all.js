@@ -10,15 +10,18 @@ module.exports = function (suite) {
 
     return suite
         .add('old mergeAll with immediate scheduler', function () {
-            oldMergeAllWithImmediateScheduler.subscribe();
+            oldMergeAllWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('old mergeAll with current thread scheduler', function () {
-            oldMergeAllWithCurrentThreadScheduler.subscribe();
+            oldMergeAllWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         })
         .add('new mergeAll with immediate scheduler', function () {
-            newMergeAllWithImmediateScheduler.subscribe();
+            newMergeAllWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new mergeAll with current thread scheduler', function () {
-            newMergeAllWithCurrentThreadScheduler.subscribe();
+            newMergeAllWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
         });
+    function _next(x) { }
+    function _throw(e){ }
+    function _return(){ }
 };
