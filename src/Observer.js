@@ -10,18 +10,14 @@ function Observer(destinationOrNext, _throw, _return) {
         destinationOrNext["return"] || (destinationOrNext["return"] = noop);
     } else {
         this.result = { done: false };
-        this._next = destinationOrNext || noop;
-        this._throw = _throw || noop;
-        this._return = _return || noop;
+        this._next = destinationOrNext && wrapTryCatch(destinationOrNext) || noop;
+        this._throw = _throw && wrapTryCatch(_throw) || noop;
+        this._return = _return && wrapTryCatch(_return) || noop;
     }
 }
 
 Observer.prototype.unsubscribe = function unsubscribe() {
     this.unsubscribed = true;
-    // this.destination = void 0;
-    // this._next = void 0;
-    // this._throw = void 0;
-    // this._return = void 0;
 };
 
 Observer.prototype["next"] = function (value) {
@@ -97,6 +93,16 @@ Observer.prototype._throw = function (error) {
 
 Observer.prototype._return = function () {
     return this.destination["return"]();
+};
+
+function wrapTryCatch(tryCatchTarget) {
+    return function tryCatcher() {
+        try {
+            return tryCatchTarget.apply(this, arguments);
+        } catch (e) {
+            return this["throw"](e);
+        }
+    }
 };
 
 module.exports = Observer;
