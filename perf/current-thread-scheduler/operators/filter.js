@@ -3,20 +3,12 @@ var RxNew = require("rx-3");
 
 module.exports = function (suite) {
     
-    var oldFilterWithImmediateScheduler = RxOld.Observable.range(0, 50, RxOld.Scheduler.immediate).filter(divByTwo).filter(divByTen);
     var oldFilterWithCurrentThreadScheduler = RxOld.Observable.range(0, 50, RxOld.Scheduler.currentThread).filter(divByTwo).filter(divByTen);
-    var newFilterWithImmediateScheduler = RxNew.Observable.range(0, 50).filter(divByTwo).filter(divByTen);
     var newFilterWithCurrentThreadScheduler = RxNew.Observable.range(0, 50, RxNew.Scheduler).filter(divByTwo).filter(divByTen);
 
     return suite
-        .add('old filter with immediate scheduler', function () {
-            oldFilterWithImmediateScheduler.subscribe(_next, _throw, _return);
-        })
         .add('old filter with current thread scheduler', function () {
             oldFilterWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
-        })
-        .add('new filter with immediate scheduler', function () {
-            newFilterWithImmediateScheduler.subscribe(_next, _throw, _return);
         })
         .add('new filter with current thread scheduler', function () {
             newFilterWithCurrentThreadScheduler.subscribe(_next, _throw, _return);
