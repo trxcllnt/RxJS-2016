@@ -12,7 +12,7 @@ function MergeAllObserver(destination, concurrent) {
     if (typeof concurrent != 'number' || concurrent !== concurrent || concurrent < 1) {
         this.concurrent = Number.POSITIVE_INFINITY;
     } else {
-        this.buffer = new LinkedStack(true);
+        this.buffer = [] || new LinkedStack(true);
         this.concurrent = concurrent;
     }
     this.stopped = false;
