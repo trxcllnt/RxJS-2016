@@ -5,5 +5,6 @@ function ES7Observable(subscribe) {
 }
 
 ES7Observable.prototype = Object.create(Observable.prototype);
+ES7Observable.prototype.constructor = Observable;
 
 module.exports = ES7Observable;
