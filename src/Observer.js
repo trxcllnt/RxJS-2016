@@ -10,9 +10,9 @@ function Observer(destinationOrNext, _throw, _return) {
         destinationOrNext["return"] || (destinationOrNext["return"] = noop);
     } else {
         this.result = { done: false };
-        this._next = destinationOrNext && wrapTryCatch(destinationOrNext) || noop;
-        this._throw = _throw && wrapTryCatch(_throw) || noop;
-        this._return = _return && wrapTryCatch(_return) || noop;
+        this._next = destinationOrNext /*&& wrapTryCatch(destinationOrNext)*/ || noop;
+        this._throw = _throw /*&& wrapTryCatch(_throw)*/ || noop;
+        this._return = _return /*&& wrapTryCatch(_return)*/ || noop;
     }
 }
 
