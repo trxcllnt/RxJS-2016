@@ -1,4 +1,5 @@
 var Rx = require("rx");
+var colors = require("colors");
 var Observable = Rx.Observable;
 var Benchmark = require("benchmark");
 var suite = new Benchmark.Suite;
@@ -51,10 +52,16 @@ Observable.from([
             tests.on("cycle", function (e) {
                 cycles.onNext(String(e.target));
             }).on("complete", function () {
+                var fastest = this.filter("fastest");
+                var fastestName = String(fastest.pluck("name"));
                 var fastestTime = parseFloat(this.filter("fastest").pluck("hz"));
                 var slowestTime = parseFloat(this.filter("slowest").pluck("hz"));
                 var percentDiff = Math.round((fastestTime / slowestTime) * 10000) / 100;
-                complete.onNext("\t" + percentDiff + "% difference in ops/sec\n");
+                if(fastestName.substr(0, 3) === "new") {
+                    complete.onNext("\t" + percentDiff + "% " + "faster".green +" than Rx\n");
+                } else {
+                    complete.onNext("\t" + percentDiff + "% " + "slower".red + " than Rx\n");
+                }
             }).run({ "async": true });
 
             return cycles.merge(complete).take(tests.length + 1);
