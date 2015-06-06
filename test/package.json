@@ -1,0 +1,16 @@
+{
+  "name": "rxjs-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "_mocha index.js",
+    "postinstall": "node -e \" var s='../../test',d='./node_modules/test',fs=require('fs'); fs.readlink(d,function(err, xl){if(!xl){fs.symlinkSync(s, d,'dir');}})\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4"
+  }
+}

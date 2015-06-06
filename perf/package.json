@@ -1,0 +1,17 @@
+{
+  "name": "rxjs-perf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "postinstall": "node -e \" var s='../../perf',d='./node_modules/perf',fs=require('fs'); fs.readlink(d,function(err, xl){if(!xl){fs.symlinkSync(s, d,'dir');}})\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "rx": "*"
+  }
+}

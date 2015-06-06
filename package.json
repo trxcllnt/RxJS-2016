@@ -1,0 +1,41 @@
+{
+  "name": "RxJS",
+  "version": "3.0.0-alpha",
+  "description": "Reactive Extensions for modern JavaScript",
+  "main": "src/observer-factory-index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "beefy src/index.js",
+    "postinstall": "node -e \" var s='../src',d='node_modules/rx-3',fs=require('fs'); fs.readlink(d,function(err, xl){if(!xl){fs.symlinkSync(s, d,'dir');}})\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ReactiveX/RxJS.git"
+  },
+  "keywords": [
+    "Rx",
+    "RxJS",
+    "ReactiveX",
+    "ReactiveExtensions",
+    "Streams",
+    "Observables",
+    "Observable",
+    "Stream",
+    "ES6",
+    "ES2015"
+  ],
+  "authors": [
+    "Ben Lesh <blesh@netflix.com>",
+    "Paul Taylor <ptaylor@netflix.com>"
+  ],
+  "license": "TBD",
+  "bugs": {
+    "url": "https://github.com/ReactiveX/RxJS/issues"
+  },
+  "homepage": "https://github.com/ReactiveX/RxJS",
+  "devDependencies": {
+    "beefy": "*",
+    "browserify": "*",
+    "yargs": "*"
+  }
+}
