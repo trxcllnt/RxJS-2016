@@ -56,11 +56,12 @@ Observable.from([
                 var fastestName = String(fastest.pluck("name"));
                 var fastestTime = parseFloat(this.filter("fastest").pluck("hz"));
                 var slowestTime = parseFloat(this.filter("slowest").pluck("hz"));
-                var percentDiff = Math.round((fastestTime / slowestTime) * 10000) / 100;
+                
+                // percent change formula: ((V2 - V1) / |V1|) * 100
                 if(fastestName.substr(0, 3) === "new") {
-                    complete.onNext("\t" + percentDiff + "% " + "faster".green +" than Rx\n");
+                    complete.onNext("\t" + (Math.round((fastestTime - slowestTime) / slowestTime * 10000) / 100) + "% " + "faster".green +" than Rx\n");
                 } else {
-                    complete.onNext("\t" + percentDiff + "% " + "slower".red + " than Rx\n");
+                    complete.onNext("\t" + (Math.round((slowestTime - fastestTime) / fastestTime * 10000) / 100) + "% " + "slower".red + " than Rx\n");
                 }
             }).run({ "async": true });
 
